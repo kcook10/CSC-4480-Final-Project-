@@ -8,3 +8,17 @@ ORDER BY E.HoursWorked Desc;
 SELECT Fname, Lname
 FROM CUSTOMER
 WHERE Fname LIKE 'A%';
+
+/*List the first and last names of all customers who ordered to the Orlando or Boston restaurant*/
+SELECT DISTINCT C.Fname, C.Lname
+FROM CUSTOMER C
+WHERE C.CustomerID IN
+  (SELECT O.CustomerID
+  FROM ORDERS O
+  JOIN RESTAURANT R ON O.RestaurantID = R.RestaurantID
+  WHERE R.Location = 'Orlando')
+OR C.CustomerID IN
+  (SELECT O.CustomerID
+  FROM ORDERS O
+  JOIN RESTAURANT R ON O.RestaurantID = R.RestaurantID
+  WHERE R.Location = 'Boston');

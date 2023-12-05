@@ -23,7 +23,6 @@ WHERE E.EmployeeID = O.EmployeeID
 AND O.Order_Type = 'To Go'
 ORDER BY Lname;
 
-
 /*List the first and last names of all customers who ordered to the Orlando or Boston Restaurant*/
 SELECT DISTINCT C.Fname, C.Lname
 FROM CUSTOMER C
@@ -37,6 +36,13 @@ WHERE C.CustomerID IN
     FROM ORDERS O
     JOIN RESTAURANT R ON O.RestaurantID = R.RestaurantID
     WHERE R.Location = 'Boston');
+/* List Employees who work on orders that cost more than $20*/
+
+SELECT DISTINCT E.Fname, E.Lname, O.Price
+FROM ORDERS O JOIN EMPLOYEES E
+ON E.EMPLOYEEID = O.EMPLOYEEID
+WHERE O.Price > 20.00
+Order by E.Lname;
 
 /*Insert a table number out of the constraint*/
 INSERT INTO ORDERS (OrderID, Price, Times, Order_Type, EmployeeID, Dates, Table_num, CustomerID, RestaurantID)

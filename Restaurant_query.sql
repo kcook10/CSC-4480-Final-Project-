@@ -3,6 +3,9 @@ SELECT DISTINCT E.Fname, E.Lname, E.HoursWorked, R.Location
 FROM EMPLOYEES E, RESTAURANT R
 WHERE R.LOCATION = 'Seattle'
 ORDER BY E.HoursWorked Desc;
+/* Add an Order */ 
+INSERT INTO ORDERS (OrderID, Price, Times, Order_Type, EmployeeID, Dates, Table_num, CustomerID, RestaurantID)
+VALUES (9193, 17.00, '3:53', 'Here', 98845244, '25-OCT-23', 2, 67103745, 83113856);
 
 /*List customers whose first name starts with A*/
 SELECT Fname, Lname
